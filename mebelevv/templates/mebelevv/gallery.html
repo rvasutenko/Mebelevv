@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Галерея
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'mebelevv/item.css' %}">
+    <link rel="stylesheet" href="{% static 'mebelevv/gallery.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section id="gallery">
+        <h2>Галерея</h2>
+        <ul>
+            {% for item in gallery %}
+                {% include 'mebelevv/includes/item.html' %}
+            {% endfor %}
+
+
+        </ul>
+    </section>
+{% endblock %}
