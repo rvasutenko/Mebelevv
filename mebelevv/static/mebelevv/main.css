@@ -53,7 +53,7 @@ html, body {
 .header-logo {
     display: flex;
     cursor: pointer;
-    content: url(/static/vector.svg);
+    content: url(./images/vector.svg);
 }
 
 .header-nav {
@@ -69,7 +69,7 @@ html, body {
 }
 
 .header-menu {
-    content: url(/static/menu.svg);
+    content: url(./images/menu.svg);
 }
 
 .main-section {
@@ -343,7 +343,7 @@ html, body {
     background-color: var(--calculator-background);
     padding: 6px;
     border-radius: 50%;
-    content: url(/static/plus.svg);
+    content: url(./images/plus.svg);
     color: var(--ui-white);
     font-weight: bold;
     float: right;
@@ -354,7 +354,7 @@ html, body {
   .plan:after {
     transition: all 0.2s linear;
     background: var(--ui-brown);
-    content: url(/static/plus-white.svg);
+    content: url(./images/plus-white.svg);
     transform: rotate(-90deg);
   }
   
