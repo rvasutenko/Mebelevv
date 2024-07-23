@@ -389,7 +389,6 @@ html, body {
   .questions-title {
     font-size: 2em;
     font-weight: 600;
-
   }
 
   .questions-list {
@@ -398,7 +397,6 @@ html, body {
   }
   
   .contacts-section {
-    height: 840px;
     background: var(--ui-brown);
     display: flex;
     flex-direction: column;
@@ -416,4 +414,52 @@ html, body {
     display: flex;
     justify-content: space-between;
     color: var(--ui-white);
+  }
+
+  .contacts-main {
+      display: flex;
+      flex-direction: row;
+      padding-bottom: 40px;
+      width: 100%;
+      justify-content: space-between;
+      line-height: 22px;
+  }
+
+  .contacts-map {
+      overflow: hidden;
+      width: fit-content;
+      border-radius: 16px;
+  }
+
+  .contacts-text {
+      font-size: 2em;
+      font-weight: 600;
+      color: var(--ui-white);
+  }
+
+  .contacts-text-wrap {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      padding: 20px 0;
+  }
+
+  .contacts-connect {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      font-size: 1em;
+      font-weight: 500;
+      color: var(--ui-white);
+  }
+
+  .contacts-connect-title {
+      font-weight: 600;
+      font-size: 1.5em;
+  }
+
+  .contacts-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 60px;
   }
