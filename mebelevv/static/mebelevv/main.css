@@ -427,7 +427,7 @@ html, body {
 
   .contacts-map {
       overflow: hidden;
-      width: fit-content;
+      max-width: fit-content;
       border-radius: 16px;
   }
 
@@ -444,7 +444,7 @@ html, body {
       padding: 20px 0;
   }
 
-  .contacts-connect {
+  .contacts-connect, .contacts-media, .contacts-address {
       display: flex;
       flex-direction: column;
       gap: 15px;
@@ -453,7 +453,7 @@ html, body {
       color: var(--ui-white);
   }
 
-  .contacts-connect-title {
+  .contacts-connect-title, .contacts-media-title, .contacts-address-title {
       font-weight: 600;
       font-size: 1.5em;
   }
@@ -462,4 +462,14 @@ html, body {
       display: flex;
       justify-content: space-between;
       gap: 60px;
+  }
+  
+  @media(max-width: 1300px) {
+      .contacts-address {
+          display: none;
+      }
+
+      .contacts-map {
+          width: 36vw;
+      }
   }
