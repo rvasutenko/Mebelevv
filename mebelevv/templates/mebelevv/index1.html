@@ -8,16 +8,23 @@
 
 
 <body>
-    <section class="header-section">
+    <div id="mySidenav" class="side-menu">
+        <div class="side-menu-top">
+            <span class="side-menu-close" onClick="closeNav()"></span>
+            <span id="mySidenavTitle" class="side-menu-title">Меню</span>
+            <div class="side-menu-body"></div>
+        </div>
+    </div>
+    <section id="" class="header-section">
         <div class="header-wrap">
             <div class="header">
-                <div class="header-logo" onclick="scrollToElem('main-section')"></div>
+                <a class="header-logo" href="#"></a>
                 <div class="header-nav">
-                    <span class="gallery"  onclick="scrollToElem('gallery-pre-section')">Наши работы</span>
-                    <span class="questions" onclick="scrollToElem('questions-section')">Вопросы</span>
-                    <span class="contacts" onclick="scrollToElem('contacts-section')">Контакты</span>
+                    <a class="gallery" href="#gallery-pre-section">Наши работы</a>
+                    <a class="questions" href="#questions-pre-section">Вопросы</a>
+                    <a class="contacts" href="#contacts-section">Контакты</a>
                 </div>
-                <div class="header-menu"></div>
+                <div class="header-menu" onclick="openNav()"></div>
             </div>
         </div>
     </section>
@@ -26,12 +33,12 @@
         <img class="main-image" src="../../static/mebelevv/images/main.jpg" alt="main-image">
             <div class="main-text element hidden">MEBELEVV</div>
             <div class="main-arrow-wrap">
-                <span class="main-arrow" onclick="scrollToElem('gallery-pre-section')"></span>
+                <a class="main-arrow" href='#gallery-pre-section'></a>
             </div>
 
         </div>
     </section>
-    <section class="gallery-pre-section"></section>
+    <section id="gallery-pre-section"></section>
     <section class="gallery-section element hidden">
         <div class="gallery-text element hidden">НАШИ РАБОТЫ</div>
             <div id="container">
@@ -73,6 +80,7 @@
         </div>
     </section>
 
+    <section id="questions-pre-section">
     <section class="questions-section">
         <span class="questions-title element hidden">
             ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ
@@ -124,7 +132,7 @@
         </div>
     </section>
 
-    <section class="contacts-section">
+    <section id='contacts-section' class="contacts-section">
         <div class="contacts-main">
             <div class="contacts-text-wrap">
             <span class="contacts-text">
@@ -180,38 +188,6 @@
 </script>
 
 <script>
-function scrollToElem(className) {
-    const element = document.querySelector(`.${className}`);
-    if (!element) {
-        console.log(`Element with class "${className}" not found.`);
-        return;
-    }
-
-    const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition - 25;
-    const duration = distance > 0? distance : -distance;
-    let start = null;
-
-    console.log(targetPosition, startPosition)
-
-    function step(timestamp) {
-        if (!start) start = timestamp;
-        const progress = timestamp - start;
-        const progressFraction = Math.min(progress / duration, 1);
-        const ease = (t) => t * (2 - t);
-
-        window.scrollTo(0, startPosition + distance * ease(progressFraction));
-        if (progress < duration) {
-            window.requestAnimationFrame(step);
-        }
-    }
-
-    window.requestAnimationFrame(step);
-}
-</script>
-
-<script>
     document.addEventListener("DOMContentLoaded", function() {
         const observerOptions = {
             root: null,
@@ -250,4 +226,18 @@ function scrollToElem(className) {
             }
         });
     }
+</script>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenavTitle").style.transition = 'opacity 0.5s 0.5s ease-out';
+    document.getElementById("mySidenavTitle").style.opacity = '1';
+    setTimeout(document.getElementById("mySidenav").style.width = "30%", 0);
+}
+
+function closeNav() {
+    document.getElementById("mySidenavTitle").style.transition = 'none';
+    document.getElementById("mySidenavTitle").style.opacity = '0';
+    setTimeout(document.getElementById("mySidenav").style.width = "0", 0);
+}
 </script>
