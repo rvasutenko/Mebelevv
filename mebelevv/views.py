@@ -9,7 +9,7 @@ from mebelevv.models import Gallery
 
 
 class StartingPageView(View):
-    template_name = 'mebelevv/index1.html'
+    template_name = 'mebelevv/index.html'
 
     def get(self, request):
         return render(request, self.template_name)

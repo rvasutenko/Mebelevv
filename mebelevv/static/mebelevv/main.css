@@ -9,8 +9,10 @@ html, body {
     height: 100vh;
     width: 100vw;
     position: relative;
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
+
 a {
     text-decoration: none;
 }
@@ -26,6 +28,10 @@ a {
 
 .element {
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.header-section {
+    width: 100%;
 }
 
 .header-wrap {
@@ -95,8 +101,14 @@ a {
     text-align: center;
     top: 46%;
     width: 100%;
-    font-size: 5em;
+    font-size: 6vw;
     font-weight: 600;
+}
+
+@media screen and (max-width: 650px){
+    .main-text {
+        font-size: 10vw;
+    }
 }
 
 .main-arrow-wrap {
@@ -170,7 +182,7 @@ a {
 
   /* WebKit Browsers */
 ::-webkit-scrollbar {
-    width: 0px;  /* Remove scrollbar space */
+    width: 0;  /* Remove scrollbar space */
     background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
@@ -189,6 +201,31 @@ a {
     flex-direction: column;
     width: 30vw;
     height: 100%;
+}
+
+.gallery-items.active {
+transition: 1s 2s;
+transform: translateX(-20%);
+}
+
+@media screen and (max-width: 650px){
+    .header-nav {
+        display: none;
+    }
+
+    .gallery-items {
+        left: -48%;
+        gap: 6vw;
+    }
+
+    .gallery-item {
+        width: 60vw;
+    }
+
+     .gallery-items.active {
+    transition: 1s 2s;
+    transform: translateX(-40%);
+  }
 }
 
 .gallery-item-image-wrap {
@@ -274,7 +311,7 @@ a {
     width: 40vw;
 }
 
-@media(max-width: 700px) {
+@media screen and (max-width: 650px) {
     .calculator-image {
         display: none;
     }
@@ -317,11 +354,6 @@ a {
     100% {
         transform: scale(1); 
     }
-  }
-  
-  .gallery-items.active {
-    transition: 1s 2s;
-    transform: translateX(-20%);
   }
 
 .questions-collapsible {
@@ -490,9 +522,10 @@ a {
     z-index: 2;
     top: 0;
     right: 0;
-    background: #000000B2;
-    box-shadow: 7px 0 20px 0 rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(2vh);
+    background: #000000B2 !important;
+    box-shadow: 7px 0 20px 0 rgba(0, 0, 0, 0.15) !important;
+    backdrop-filter: blur(2px) !important;
+    -webkit-backdrop-filter: blur(2px) !important;
     overflow-x: hidden;
     transition: 0.5s;
     text-align:center;

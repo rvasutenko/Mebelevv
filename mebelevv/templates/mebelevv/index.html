@@ -1,5 +1,8 @@
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MEBELEVV</title>
     <link rel="website icon" href="../../static/mebelevv/images/logo-black.svg" type="png">
     <link rel="stylesheet" href="../../static/mebelevv/vars.css">
@@ -230,9 +233,14 @@
 
 <script>
 function openNav() {
+    let width = document.body.offsetWidth;
+    console.log(width)
+    let navWidth = "30%";
+    if (width < 480) navWidth = "100%";
+    else if (width < 780) navWidth = "50%";
     document.getElementById("mySidenavTitle").style.transition = 'opacity 0.5s 0.5s ease-out';
     document.getElementById("mySidenavTitle").style.opacity = '1';
-    setTimeout(document.getElementById("mySidenav").style.width = "30%", 0);
+    setTimeout(document.getElementById("mySidenav").style.width = navWidth, 0);
 }
 
 function closeNav() {
