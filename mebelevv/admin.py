@@ -12,9 +12,9 @@ class GalleryAdmin(admin.ModelAdmin):
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('order', 'title')
     filter_horizontal = ('answers',)
-    list_filter = ('title', 'answers',)
+    list_filter = ('order', 'title', 'answers')
 
 
 @admin.register(Answer)

@@ -17,6 +17,7 @@ class Gallery(models.Model):
 
 
 class Question(models.Model):
+    order = models.PositiveSmallIntegerField('Порядок вопроса', blank=False, null=False, default=1)
     title = models.CharField('Заголовок', max_length=30)
     answers = models.ManyToManyField('Answer', verbose_name='Ответы', max_length=1000, blank=False)
 
