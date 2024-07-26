@@ -1,0 +1,221 @@
+<head>
+    <meta charset="UTF-8">
+    <title>MEBELEVV</title>
+    <link rel="website icon" href="../../static/mebelevv/images/logo-black.svg" type="png">
+    <link rel="stylesheet" href="../../static/mebelevv/vars.css">
+    <link rel="stylesheet" href="../../static/mebelevv/main.css">
+</head>
+
+
+<body>
+    <section class="header-section">
+        <div class="header-wrap">
+            <div class="header">
+                <div class="header-logo" onclick="scrollToElem('main-section')"></div>
+                <div class="header-nav">
+                    <span class="gallery"  onclick="scrollToElem('gallery-pre-section')">Наши работы</span>
+                    <span class="questions" onclick="scrollToElem('questions-section')">Вопросы</span>
+                    <span class="contacts" onclick="scrollToElem('contacts-section')">Контакты</span>
+                </div>
+                <div class="header-menu"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-section">
+        <img class="main-image" src="../../static/mebelevv/images/main.jpg" alt="main-image">
+            <div class="main-text element hidden">MEBELEVV</div>
+            <div class="main-arrow-wrap">
+                <span class="main-arrow" onclick="scrollToElem('gallery-pre-section')"></span>
+            </div>
+            
+        </div>
+    </section>
+    <section class="gallery-pre-section"></section>
+    <section class="gallery-section element hidden">
+        <div class="gallery-text element hidden">НАШИ РАБОТЫ</div>
+            <div id="container">
+                <div class="gallery-items">
+                    <div class="gallery-item">
+                            <img class="gallery-item-image" onclick="window.open(this.src)" src="../../static/mebelevv/images/bed.jpg" alt="gallery-image">
+                        <span class="gallery-item-text">Кровать</span>
+                        <hr class="gallery-item-hr">
+                    </div>
+                    <div class="gallery-item">
+                        <img class="gallery-item-image" src="../../static/mebelevv/images/tea-table.jpg" onclick="window.open(this.src)" alt="gallery-image">
+                        <span class="gallery-item-text">Чайный столик</span>
+                        <hr class="gallery-item-hr">
+                    </div>
+                    <div class="gallery-item">
+                        <img class="gallery-item-image" src="../../static/mebelevv/images/sofa.jpg" onclick="window.open(this.src)" alt="gallery-image">
+                        <span class="gallery-item-text">Диван</span>
+                        <hr class="gallery-item-hr">
+                    </div>
+                    <div class="gallery-item">
+                        <img class="gallery-item-image" src="../../static/mebelevv/images/kitchen-table.jpg" onclick="window.open(this.src)" alt="gallery-image">
+                        <span class="gallery-item-text">Кухонный стол</span>
+                        <hr class="gallery-item-hr">
+                    </div>
+            </div>
+    </section>
+
+    <section class="calculator-section">
+        <div class="calculator-wrap element hidden">
+            <div class="calculator-questions">
+                <span class="calculator-text">Ответьте на <span class="calculator-text-colored">5 вопросов</span> и узнайте стоимость</span>
+                <span class="calculator-text-secondary">Мы поможем вам рассчитать стоимость мебели вашей мечты, а также подобрать варианты дизайна и изготовления мебели</span>
+                <button class="calculator-button">Узнать стоимость</button>
+            </div>
+            <div class="calculator-image">
+                <img class="calculator-img" src="../../static/mebelevv/images/calculator.jpg" alt="Calculator"></img>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="questions-section">
+        <span class="questions-title element hidden">
+            ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ
+        </span>
+        <div class="questions-list element hidden">
+            <div class="questions-collapsible-wrap">
+                <button class="questions-collapsible">Сколько времени занимает изготовление мебели?</button>
+                <div class="questions-content">
+                    <div class="questions-text">
+                        Сроки изготовления мебели варьируются в зависимости от сложности и объема заказа. Большие кухни с нестандартными фасадами и сложными механизмами, большие прихожие изготавливаются в среднем до 25 рабочих дней. Двери шкафов-купе, простые шкафы, столы (в том числе компьютерные), тумбы, комоды занимают меньше времени для разработки и изготовления – от 3 до 10 рабочих дней. Но, опять же, индивидуальная мебель – это масса тонкостей и ньюансов, которые могут повлиять на сроки изготовления мебели.   
+                    </div>
+                </div>
+                <hr class="questions-content-hr">
+            </div>
+            <div class="questions-collapsible-wrap">
+                <button class="questions-collapsible">Есть ли у вас рассрочка или кредит?</button>
+                <div class="questions-content">
+                    <div class="questions-text">aывыфвфывыфффффффффффффффффф</div>
+                </div>
+                <hr class="questions-content-hr">
+            </div>
+            <div class="questions-collapsible-wrap">
+                <button class="questions-collapsible">Какой срок гарантии?</button>
+                <div class="questions-content">
+                    <div class="questions-text">aывыфвфывыфффффффффффффффффф</div>
+                </div>
+                <hr class="questions-content-hr">
+            </div>
+            <div class="questions-collapsible-wrap">
+                <button class="questions-collapsible">Как заказать замер?</button>
+                <div class="questions-content">
+                    <div class="questions-text">aывыфвфывыфффффффффффффффффф</div>
+                </div>
+                <hr class="questions-content-hr">
+            </div>
+            <div class="questions-collapsible-wrap">
+                <button class="questions-collapsible">Сколько стоит сборка и доставка?</button>
+                <div class="questions-content">
+                    <div class="questions-text">aывыфвфывыфффффффффффффффффф</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contacts-section">
+        <div class="contacts-wrap">
+            <div class="contacts-connect"></div>
+            <div class="contacts-media"></div>
+            <div class="contacts-address"></div>
+        </div>
+         <div class="contacts-map"></div>
+         <div class="footer">
+            <hr class="footer-hr">
+                <div class="footer-text">
+                    <div class="footer-copyright">Copyright © 2024 Mebelevv</div>
+                    <div class="footer-rights">Все права защищены</div> 
+                </div>
+            </div>
+    </section>
+</body>
+<script>
+    (function move() {
+    let container = document.querySelector('.gallery-items'),
+        block = container.querySelector('.gallery-item');
+        container.classList.remove("active");
+    container.appendChild(block);
+    window.setTimeout(move, 3000);
+    window.setTimeout(function() {
+        container.classList.add("active");
+    }, 100);
+    })();
+</script>
+
+<script>
+function scrollToElem(className) {
+    const element = document.querySelector(`.${className}`);
+    if (!element) {
+        console.log(`Element with class "${className}" not found.`);
+        return;
+    }
+
+    const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition - 25;
+    const duration = distance > 0? distance : -distance;
+    let start = null;
+
+    console.log(targetPosition, startPosition)
+
+    function step(timestamp) {
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+        const progressFraction = Math.min(progress / duration, 1);
+        const ease = (t) => t * (2 - t);
+
+        window.scrollTo(0, startPosition + distance * ease(progressFraction));
+        if (progress < duration) {
+            window.requestAnimationFrame(step);
+        }
+    }
+    
+    window.requestAnimationFrame(step);
+}
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.classList.remove('hidden');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.element').forEach(element => {
+            observer.observe(element);
+        });
+    });
+</script>
+
+<script>
+    var coll = document.getElementsByClassName("questions-collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("plan");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+            content.style.maxHeight = null;
+            } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            } 
+        });
+    }
+</script>
