@@ -2,6 +2,21 @@ from django.shortcuts import render
 from django.views import View
 from mebelevv.models import *
 from django.core.files.storage import FileSystemStorage
+import requests
+
+
+def telegramSendMessage(phoneNumber, answers, file):
+    message = f"Номер телефона: {phoneNumber}\n\n"
+    if file:
+        message += f"Прикреплённые файлы: https://mebelevv.kz/files/form_images/{file}\n\n"
+    for index, (key, value) in enumerate(zip(answers.keys(), answers.values())):
+        message += f"{index + 1}. <b>{key}</b> — {value}\n"
+
+    botToken = '6799970831:AAF3oZT-BPgvpUDtiIyO_OpRut-TR_0tezQ'
+    botChatID = '703980450'
+    sendText = 'https://api.telegram.org/bot' + botToken + '/sendMessage?chat_id=' + botChatID + '&parse_mode=html&text=' + message
+    response = requests.get(sendText)
+    return response.json()
 
 
 class MainPage(View):
@@ -24,4 +39,5 @@ class MainPage(View):
 
         questions = Question.objects.all()
         gallery = Gallery.objects.all()
+        telegramSendMessage(phoneNumber, answers, filename)
         return render(request, 'mebelevv/index.html', context={'gallery': gallery, 'questions': questions})

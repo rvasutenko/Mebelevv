@@ -1,5 +1,8 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -65,7 +68,7 @@ WSGI_APPLICATION = 'mebelevv_site.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-if DEBUG:
+if not os.environ.get("REMOTE"):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
