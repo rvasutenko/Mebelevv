@@ -1,8 +1,13 @@
+import os
+
 from django.shortcuts import render
 from django.views import View
 from mebelevv.models import *
 from django.core.files.storage import FileSystemStorage
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def telegramSendMessage(phoneNumber, answers, file):
@@ -12,12 +17,11 @@ def telegramSendMessage(phoneNumber, answers, file):
     for index, (key, value) in enumerate(zip(answers.keys(), answers.values())):
         message += f"{index + 1}. <b>{key}</b> — {value}\n"
 
-    botToken = '6799970831:AAF3oZT-BPgvpUDtiIyO_OpRut-TR_0tezQ'
-    botChatID = '703980450'
+    botToken = os.getenv('TG_BOT_TOKEN')
+    botChatID = os.getenv('TG_CHAT_ID')
     sendText = 'https://api.telegram.org/bot' + botToken + '/sendMessage?chat_id=' + botChatID + '&parse_mode=html&text=' + message
     response = requests.get(sendText)
     return response.json()
-
 
 
 class MainPage(View):
