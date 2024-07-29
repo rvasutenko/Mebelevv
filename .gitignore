@@ -2,3 +2,4 @@
 .venv
 /uploads/gallery/
 mebelevv_db
+.env

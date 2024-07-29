@@ -1,22 +1,45 @@
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import ListView
-
-from mebelevv.models import Gallery
-
-
-# Create your views here.
+from mebelevv.models import *
+from django.core.files.storage import FileSystemStorage
+import requests
 
 
-class StartingPageView(View):
-    template_name = 'mebelevv/index.html'
+def telegramSendMessage(phoneNumber, answers, file):
+    message = f"Номер телефона: {phoneNumber}\n\n"
+    if file:
+        message += f"Прикреплённые файлы: https://mebelevv.kz/files/form_images/{file}\n\n"
+    for index, (key, value) in enumerate(zip(answers.keys(), answers.values())):
+        message += f"{index + 1}. <b>{key}</b> — {value}\n"
+
+    botToken = '6799970831:AAF3oZT-BPgvpUDtiIyO_OpRut-TR_0tezQ'
+    botChatID = '703980450'
+    sendText = 'https://api.telegram.org/bot' + botToken + '/sendMessage?chat_id=' + botChatID + '&parse_mode=html&text=' + message
+    response = requests.get(sendText)
+    return response.json()
+
+
+
+class MainPage(View):
 
     def get(self, request):
-        return render(request, self.template_name)
+        questions = Question.objects.all()
+        gallery = Gallery.objects.all()
+        return render(request, 'mebelevv/index.html', context={'gallery': gallery, 'questions': questions})
 
+    def post(self, request):
+        answers = {}
+        for q in Question.objects.all():
+            answers[request.POST.get(q.title).split(' // ')[0]] = request.POST.get(q.title).split(' // ')[1]
+        phoneNumber = request.POST.get('phoneNumber')
+        filename = None
+        if request.method == 'POST' and request.FILES:
+            file = request.FILES['userFile']
+            fs = FileSystemStorage()
+            filename = fs.save(file.name, file)
+        UserInfo(answers=answers, phoneNumber=phoneNumber, img=filename).save()
 
-class GalleryPageView(ListView):
-    template_name = 'mebelevv/gallery.html'
-    model = Gallery
-    ordering = ['-date']
-    context_object_name = 'gallery'
+        questions = Question.objects.all()
+        gallery = Gallery.objects.all()
+        telegramSendMessage(phoneNumber, answers, filename)
+        return render(request, 'mebelevv/index.html', context={'gallery': gallery, 'questions': questions})
