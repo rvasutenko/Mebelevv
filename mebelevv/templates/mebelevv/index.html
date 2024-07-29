@@ -1,12 +1,22 @@
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Мебельная компания MEBELEVV предлагает изготовление мебели на заказ: шкафы, кухни, офисная мебель. Индивидуальные решения для вашего дома и офиса.">
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://mebelevv.kz/"/>
+    <meta property="og:image" content="https://mebelevv.kz/images/logo-black.svg"/>
+    <meta property="og:title" content="Мебельная компания MEBELEVV"/>
+    <meta property="og:description" content="Мебельная компания MEBELEVV предлагает изготовление мебели на заказ: шкафы, кухни, офисная мебель. Индивидуальные решения для вашего дома и офиса."/>
+
     <title>MEBELEVV</title>
-    <link rel="website icon" href="../../static/mebelevv/images/logo-black.svg" type="png">
+    <link rel="icon" href="../../static/mebelevv/images/logo-black.svg" type="image/png">
     <link rel="stylesheet" href="../../static/mebelevv/vars.css">
     <link rel="stylesheet" href="../../static/mebelevv/main.css">
+    <link rel="stylesheet" href="../../static/mebelevv/side-menu.css">
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -69,7 +79,7 @@
                     </div>
             </div>
     </section>
-      
+
   <dialog id="modalWindow">
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -125,10 +135,11 @@
             <div class="calculator-questions">
                 <span class="calculator-text">Ответьте на <span class="calculator-text-colored">5 вопросов</span> и узнайте стоимость</span>
                 <span class="calculator-text-secondary">Мы поможем вам рассчитать стоимость мебели вашей мечты, а также подобрать варианты дизайна и изготовления мебели</span>
-            <button id="openModal" class="calculator-button">Узнать стоимость</button>
+                <button id="openModal" class="calculator-button">Узнать стоимость</button>
             </div>
             <div class="calculator-image">
                 <img class="calculator-img" src="../../static/mebelevv/images/calculator.jpg" alt="Calculator"></img>
+
             </div>
         </div>
     </section>
@@ -405,3 +416,4 @@ function closeNav() {
     setTimeout(document.getElementById("mySidenav").style.width = "0", 0);
 }
 </script>
+</html>
