@@ -19,7 +19,9 @@ def telegramSendMessage(phoneNumber, answers, file):
     return response.json()
 
 
+
 class MainPage(View):
+
     def get(self, request):
         questions = Question.objects.all()
         gallery = Gallery.objects.all()

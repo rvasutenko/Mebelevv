@@ -9,6 +9,12 @@ html, body {
     height: 100vh;
     width: 100vw;
     position: relative;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
 }
 
 .hidden {
@@ -23,6 +29,10 @@ html, body {
 
 .element {
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.header-section {
+    width: 100%;
 }
 
 .header-wrap {
@@ -91,8 +101,14 @@ html, body {
     text-align: center;
     top: 46%;
     width: 100%;
-    font-size: 5em;
+    font-size: 6vw;
     font-weight: 600;
+}
+
+@media screen and (max-width: 650px){
+    .main-text {
+        font-size: 10vw;
+    }
 }
 
 .main-arrow-wrap {
@@ -166,8 +182,8 @@ html, body {
 
 /* WebKit Browsers */
 ::-webkit-scrollbar {
-    width: 0px; /* Remove scrollbar space */
-    background: transparent; /* Optional: just make scrollbar invisible */
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
 /* Firefox */
@@ -185,6 +201,31 @@ html, body {
     flex-direction: column;
     width: 30vw;
     height: 100%;
+}
+
+.gallery-items.active {
+transition: 1s 2s;
+transform: translateX(-20%);
+}
+
+@media screen and (max-width: 650px){
+    .header-nav {
+        display: none;
+    }
+
+    .gallery-items {
+        left: -48%;
+        gap: 6vw;
+    }
+
+    .gallery-item {
+        width: 60vw;
+    }
+
+     .gallery-items.active {
+    transition: 1s 2s;
+    transform: translateX(-40%);
+  }
 }
 
 .gallery-item-image-wrap {
@@ -270,7 +311,7 @@ html, body {
     width: 40vw;
 }
 
-@media (max-width: 700px) {
+@media screen and (max-width: 650px) {
     .calculator-image {
         display: none;
     }
@@ -314,12 +355,7 @@ html, body {
     100% {
         transform: scale(1);
     }
-}
-
-.gallery-items.active {
-    transition: 1s 2s;
-    transform: translateX(-20%);
-}
+  }
 
 .questions-collapsible {
     font-family: 'Montserrat';
@@ -419,8 +455,6 @@ html, body {
     justify-content: space-between;
     color: var(--ui-white);
 }
-
-
 
 
 dialog {
@@ -598,11 +632,6 @@ input[type='radio']:checked:after {
     justify-content: space-between;
     gap: 10px;
 }
-
-
-
-
-
 
 .input-file {
 	position: relative;
