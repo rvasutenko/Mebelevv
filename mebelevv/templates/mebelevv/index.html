@@ -90,15 +90,26 @@
         {% for question in questions %}
             <fieldset name="" id="question{{ forloop.counter }}" {% if forloop.counter > 1 %}style="display: none;"{% endif %}>
                 <div class="question-title">{{ question.title }}</div>
-                <div class="answers-block">
-                    {% for answer in question.answers.all %}
-                        <div class="answer gray {{ question.title }}" onclick="makeInputChecked(this, 'input-{{ answer.title }}', '{{ question.title }}');">
-                            <input type="radio" id="input-{{ answer.title }}" name="{{ question.title }}" class="checkbox" value="{{ question.title }} // {{ answer.title }}"/>
-                            <label class="windowText" for="opt1">{{ answer.title }}</label>
-                            <img src="{% if answer.img %}{{ answer.img.url }}{% endif %}">
-                        </div>
-                    {% endfor %}
-                </div>
+                {% if question.hasImage %}
+                    <div class="img-answers-block">
+                        {% for answer in question.answers.all %}
+                            <div class="answer gray {{ question.title }}" onclick="makeInputChecked(this, 'input-{{ answer.title }}', '{{ question.title }}');">
+                                <input style="display: none;" type="radio" id="input-{{ answer.title }}" name="{{ question.title }}" class="checkbox" value="{{ question.title }} // {{ answer.title }}"/>
+                                <img src="{{ answer.img.url }}">
+                                <label class="windowText" for="opt1">{{ answer.title }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="answers-block">
+                        {% for answer in question.answers.all %}
+                            <div class="answer gray {{ question.title }}" onclick="makeInputChecked(this, 'input-{{ answer.title }}', '{{ question.title }}');">
+                                <input type="radio" id="input-{{ answer.title }}" name="{{ question.title }}" class="checkbox" value="{{ question.title }} // {{ answer.title }}"/>
+                                <label class="windowText" for="opt1">{{ answer.title }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
                 <div class="bottomLine">
                     <div class="windowText gray">Вопросов осталось: {{ forloop.revcounter }}</div>
                     <button type="button" onclick="validateForm('{{ question.title }}', this)" class="{% if question != questions.last %}nextQuestion{% else %}lastNextQuestion{% endif %}" id="{{ forloop.counter }}" {% if forloop.counter > 1 %}style="display: none;"{% endif %}>Далее</button>

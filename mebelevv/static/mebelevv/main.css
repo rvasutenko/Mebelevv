@@ -495,6 +495,13 @@ fieldset {
     transition: ease 0.2s;
 }
 
+.answer img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    aspect-ratio: 4 / 3;
+}
+
 .answer:hover {
     border-color: #726156;
     color: #726156;
@@ -505,6 +512,22 @@ fieldset {
     display: flex;
     row-gap: 8px;
     flex-direction: column;
+}
+
+.img-answers-block {
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.img-answers-block .answer {
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.img-answers-block .windowText {
+    font-size: 14px;
 }
 
 .checkbox {

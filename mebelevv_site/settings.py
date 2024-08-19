@@ -24,7 +24,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'mebelevv',
-    'django_json_widget',
+    # 'django_json_widget',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
