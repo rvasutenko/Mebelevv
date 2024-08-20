@@ -444,6 +444,7 @@ transform: translateX(-20%);
 
 
 dialog {
+    max-width: 70%;
     width: 452px;
     margin: auto;
     position: fixed;
@@ -473,6 +474,19 @@ fieldset {
 .windowText {
     font-size: 16px;
     display: flex;
+}
+
+@media screen and (max-width: 500px) {
+    .windowText {
+        flex-direction: column;
+    }
+    .brown {
+        margin-left: 0 !important;
+        margin-top: -3px;
+    }
+    .answer {
+        padding: 14px !important;
+    }
 }
 
 .gray {
@@ -566,6 +580,7 @@ input[type='radio'] {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 40px;
 }
 
 #close {
