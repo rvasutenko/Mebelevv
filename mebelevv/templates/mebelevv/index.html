@@ -38,7 +38,8 @@
                     <a class="questions" href="#questions-pre-section">Вопросы</a>
                     <a class="contacts" href="#contacts-section">Контакты</a>
                 </div>
-                <div class="header-menu" onclick="openNav()"></div>
+{#                <div class="header-menu" onclick="openNav()"></div>#}
+                <button class="connect">Связаться</button>
             </div>
         </div>
     </section>
@@ -55,91 +56,92 @@
     <section id="gallery-pre-section"></section>
     <section class="gallery-section element hidden">
         <div class="gallery-text element hidden">НАШИ РАБОТЫ</div>
-            <div id="container">
-                <div class="gallery-items">
-                    <div class="gallery-item">
-                            <img class="gallery-item-image" onclick="window.open(this.src)" src="../../static/mebelevv/images/bed.jpg" alt="gallery-image">
-                        <span class="gallery-item-text">Кровать</span>
-                        <hr class="gallery-item-hr">
-                    </div>
-                    <div class="gallery-item">
-                        <img class="gallery-item-image" src="../../static/mebelevv/images/tea-table.jpg" onclick="window.open(this.src)" alt="gallery-image">
-                        <span class="gallery-item-text">Чайный столик</span>
-                        <hr class="gallery-item-hr">
-                    </div>
-                    <div class="gallery-item">
-                        <img class="gallery-item-image" src="../../static/mebelevv/images/sofa.jpg" onclick="window.open(this.src)" alt="gallery-image">
-                        <span class="gallery-item-text">Диван</span>
-                        <hr class="gallery-item-hr">
-                    </div>
-                    <div class="gallery-item">
-                        <img class="gallery-item-image" src="../../static/mebelevv/images/kitchen-table.jpg" onclick="window.open(this.src)" alt="gallery-image">
-                        <span class="gallery-item-text">Кухонный стол</span>
-                        <hr class="gallery-item-hr">
-                    </div>
+        <div id="container">
+            <div class="gallery-items">
+                <div class="gallery-item">
+                    <img class="gallery-item-image" onclick="window.open(this.src)" src="../../static/mebelevv/images/bed.jpg" alt="gallery-image">
+                    <span class="gallery-item-text">Кровать</span>
+                    <hr class="gallery-item-hr">
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-item-image" src="../../static/mebelevv/images/tea-table.jpg" onclick="window.open(this.src)" alt="gallery-image">
+                    <span class="gallery-item-text">Чайный столик</span>
+                    <hr class="gallery-item-hr">
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-item-image" src="../../static/mebelevv/images/sofa.jpg" onclick="window.open(this.src)" alt="gallery-image">
+                    <span class="gallery-item-text">Диван</span>
+                    <hr class="gallery-item-hr">
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-item-image" src="../../static/mebelevv/images/kitchen-table.jpg" onclick="window.open(this.src)" alt="gallery-image">
+                    <span class="gallery-item-text">Кухонный стол</span>
+                    <hr class="gallery-item-hr">
+                </div>
             </div>
+        </div>
     </section>
 
-  <dialog id="modalWindow">
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="topLine">
-            <div class="windowText gray">Рассчитайте<div class="brown">стоимость кухни</div></div>
-            <img src="../../../static/close-icon.svg" alt="" id="close">
-        </div>
-        {% for question in questions %}
-            <fieldset name="" id="question{{ forloop.counter }}" {% if forloop.counter > 1 %}style="display: none;"{% endif %}>
-                <div class="question-title">{{ question.title }}</div>
-                {% if question.hasImage %}
-                    <div class="img-answers-block">
-                        {% for answer in question.answers.all %}
-                            <div class="answer gray {{ question.title }}" onclick="makeInputChecked(this, 'input-{{ answer.title }}', '{{ question.title }}');">
-                                <input style="display: none;" type="radio" id="input-{{ answer.title }}" name="{{ question.title }}" class="checkbox" value="{{ question.title }} // {{ answer.title }}"/>
-                                <img src="{{ answer.img.url }}">
-                                <label class="windowText" for="opt1">{{ answer.title }}</label>
-                            </div>
-                        {% endfor %}
+    <dialog id="modalWindow">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="topLine">
+                <div class="windowText gray">Рассчитайте<div class="brown">стоимость кухни</div></div>
+                <img src="../../../static/close-icon.svg" alt="" id="close">
+            </div>
+            {% for question in questions %}
+                <fieldset name="" id="question{{ forloop.counter }}" {% if forloop.counter > 1 %}style="display: none;"{% endif %}>
+                    <div class="question-title">{{ question.title }}</div>
+                    {% if question.hasImage %}
+                        <div class="img-answers-block">
+                            {% for answer in question.answers.all %}
+                                <div class="answer gray {{ question.title }}" onclick="makeInputChecked(this, 'input-{{ answer.title }}', '{{ question.title }}');">
+                                    <input style="display: none;" type="radio" id="input-{{ answer.title }}" name="{{ question.title }}" class="checkbox" value="{{ question.title }} // {{ answer.title }}"/>
+                                    <img src="{{ answer.img.url }}">
+                                    <label class="windowText" for="opt1">{{ answer.title }}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="answers-block">
+                            {% for answer in question.answers.all %}
+                                <div class="answer gray {{ question.title }}" onclick="makeInputChecked(this, 'input-{{ answer.title }}', '{{ question.title }}');">
+                                    <input type="radio" id="input-{{ answer.title }}" name="{{ question.title }}" class="checkbox" value="{{ question.title }} // {{ answer.title }}"/>
+                                    <label class="windowText" for="opt1">{{ answer.title }}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <div class="bottomLine">
+                        <div class="windowText gray">Вопросов осталось: {{ forloop.revcounter }}</div>
+                        <button type="button" onclick="validateForm('{{ question.title }}', this)" class="{% if question != questions.last %}nextQuestion{% else %}lastNextQuestion{% endif %}" id="{{ forloop.counter }}" {% if forloop.counter > 1 %}style="display: none;"{% endif %}>Далее</button>
                     </div>
-                {% else %}
-                    <div class="answers-block">
-                        {% for answer in question.answers.all %}
-                            <div class="answer gray {{ question.title }}" onclick="makeInputChecked(this, 'input-{{ answer.title }}', '{{ question.title }}');">
-                                <input type="radio" id="input-{{ answer.title }}" name="{{ question.title }}" class="checkbox" value="{{ question.title }} // {{ answer.title }}"/>
-                                <label class="windowText" for="opt1">{{ answer.title }}</label>
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
+                </fieldset>
+            {% endfor %}
+            <fieldset name="" id="questionLast" style="display: none;">
+                <div class="question-title">Оставьте свои контакты, и мы перезвоним вам с результатами</div>
+                <div class="input-fields">
+                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Телефон"/>
+                    <label class="input-file">
+                        <input type="file" id="userFile" name="userFile">
+                        <span>Выберите файл</span>
+                        <img src="../../../static/upload-icon.svg" alt="">
+                    </label>
+                    <script>
+                        $('.input-file input[type=file]').on('change', function(){
+                            let file = this.files[0];
+                            $(this).next().html(file.name);
+                            this.style.color = '#667085';
+                        });
+                    </script>
+                </div>
                 <div class="bottomLine">
-                    <div class="windowText gray">Вопросов осталось: {{ forloop.revcounter }}</div>
-                    <button type="button" onclick="validateForm('{{ question.title }}', this)" class="{% if question != questions.last %}nextQuestion{% else %}lastNextQuestion{% endif %}" id="{{ forloop.counter }}" {% if forloop.counter > 1 %}style="display: none;"{% endif %}>Далее</button>
+                    <div class="windowText gray">Финальный штрих</div>
+                    <input type="submit" class="sendBtn" value="Отправить">
                 </div>
             </fieldset>
-        {% endfor %}
-        <fieldset name="" id="questionLast" style="display: none;">
-            <div class="question-title">Оставьте свои контакты, и мы перезвоним вам с результатами</div>
-            <div class="input-fields">
-                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Телефон"/>
-                <label class="input-file">
-                    <input type="file" id="userFile" name="userFile">
-                    <span>Выберите файл</span>
-                    <img src="../../../static/upload-icon.svg" alt="">
-                </label>
-                <script>
-                    $('.input-file input[type=file]').on('change', function(){
-                        let file = this.files[0];
-                        $(this).next().html(file.name);
-                        this.style.color = '#667085';
-                    });
-                </script>
-            </div>
-            <div class="bottomLine">
-                <div class="windowText gray">Финальный штрих</div>
-                <input type="submit" class="sendBtn" value="Отправить">
-            </div>
-        </fieldset>
-    </form>
-</dialog>
+        </form>
+    </dialog>
 
     <section class="calculator-section">
         <div class="calculator-wrap element hidden">
@@ -149,8 +151,7 @@
                 <button id="openModal" class="calculator-button">Узнать стоимость</button>
             </div>
             <div class="calculator-image">
-                <img class="calculator-img" src="../../static/mebelevv/images/calculator.jpg" alt="Calculator"></img>
-
+                <img class="calculator-img" src="../../static/mebelevv/images/calculator.jpg" alt="Calculator">
             </div>
         </div>
     </section>
@@ -216,27 +217,24 @@
             <div class="contacts-wrap">
                 <div class="contacts-connect">
                     <span class="contacts-connect-title">Связь</span>
-                    <span class="contacts-connect-number">8 (800) 555-35-35</span>
-                    <span class="contacts-connect-email">mebelevv@mail.ru</span>
+                    <span class="contacts-connect-number contacts-line">8 (800) 555-35-35</span>
+                    <span class="contacts-connect-email contacts-line">mebelevv@mail.ru</span>
                 </div>
                 <div class="contacts-media">
                     <span class="contacts-media-title">Соцсети</span>
-                    <span class="contacts-media-number">8 (800) 555-35-35</span>
-                    <span class="contacts-media-email">mebelevv@mail.ru</span>
+                    <span class="contacts-media-number contacts-line">8 (800) 555-35-35</span>
+                    <span class="contacts-media-email contacts-line">mebelevv@mail.ru</span>
                 </div>
                 <div class="contacts-address">
                     <span class="contacts-address-title">Адрес</span>
-                    <span class="contacts-address-number">8 (800) 555-35-35</span>
-                    <span class="contacts-address-email">mebelevv@mail.ru</span>
+                    <span class="contacts-address-number contacts-line">8 (800) 555-35-35</span>
+                    <span class="contacts-address-email contacts-line">mebelevv@mail.ru</span>
                 </div>
             </div>
         </div>
         <div class="contacts-map">
-            <script
-                    type="text/javascript"
-                    charset="utf-8"
-                    async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A55e27bc7b91ced832623cb237b52063532ca99c52546a0f6c37a8ec23fe186b4&amp;width=400&amp;height=240&amp;lang=ru_RU&amp;scroll=true"></script>
-         </div>
+            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A55e27bc7b91ced832623cb237b52063532ca99c52546a0f6c37a8ec23fe186b4&amp;width=400&amp;height=240&amp;lang=ru_RU&amp;scroll=true"></script>
+        </div>
         </div>
 
          <div class="footer">
@@ -344,18 +342,18 @@
         dialog.close()
     }
 </script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var scrollbar = document.body.clientWidth - window.innerWidth + 'px';
-        console.log(scrollbar);
-        document.querySelector('[id="openModal"]').addEventListener('click', function () {
-            document.body.style.overflow = 'hidden';
-        });
-        document.querySelector('[id="close"]').addEventListener('click', function () {
-            document.body.style.overflow = 'visible';
-        });
-    });
-</script>
+{#<script>#}
+{#    document.addEventListener("DOMContentLoaded", function () {#}
+{#        var scrollbar = document.body.clientWidth - window.innerWidth + 'px';#}
+{#        console.log(scrollbar);#}
+{#        document.querySelector('[id="openModal"]').addEventListener('click', function () {#}
+{#            document.body.style.overflow = 'hidden';#}
+{#        });#}
+{#        document.querySelector('[id="close"]').addEventListener('click', function () {#}
+{#            document.body.style.overflow = 'visible';#}
+{#        });#}
+{#    });#}
+{#</script>#}
 <script>
     function validateForm(name, elem) {
         var currentId = elem.id
@@ -367,7 +365,7 @@
             i++;
         }
         if (!formValid) {
-            alert("Must check some option!");
+            alert("Пожалуйста, выберите один из предложенных вариантов");
         } else {
             if (elem.className != 'lastNextQuestion') {
                 var currentQuestion = document.getElementById('question' + currentId);

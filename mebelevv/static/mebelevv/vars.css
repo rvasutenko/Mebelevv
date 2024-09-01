@@ -2,11 +2,19 @@
     --header-black:                 #00000099;
     --ui-light-black:               #303030;
     --ui-white:                     #fff;  
-    --calculator-background:        #FAF5F2;   
+    --calculator-background:        #FAF5F2;
+    --plus:                         #EDE9E7;
     --ui-hr:                        #E1E1E1;
     --ui-brown:                     #726156;
     --footer-hr:                    #ffffff50;
     --gallery-active:               #4F392C;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Montserrat Regular'), url('./fonts/Montserrat-Regular.ttf') format("truetype");
 }
 
 @font-face {
