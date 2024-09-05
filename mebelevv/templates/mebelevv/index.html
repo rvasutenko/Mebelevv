@@ -1,3 +1,5 @@
+{% load static %}
+
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -38,11 +40,41 @@
                     <a class="questions" href="#questions-pre-section">Вопросы</a>
                     <a class="contacts" href="#contacts-section">Контакты</a>
                 </div>
-{#                <div class="header-menu" onclick="openNav()"></div>#}
-                <button class="connect">Связаться</button>
+                <button class="connect" id="openContacts">Связаться</button>
             </div>
         </div>
     </section>
+
+    <dialog id="contactWindow">
+        <div class="contacts-block" id="contacts-block">
+            <a class="contact" href="https://t.me/rvasutenko">
+                <img class="contact-icon" src="{% static 'mebelevv/images/tg_logo.svg' %}" alt="">
+                Написать в Telegram
+            </a>
+            <a class="contact" href="https://wa.me/79648826455">
+                <img class="contact-icon" src="{% static 'mebelevv/images/whatsapp_logo.svg' %}" alt="">
+                Написать в WhatsApp
+            </a>
+            <div id="contact-via-phone" class="contact">
+                <img class="contact-icon" src="{% static 'mebelevv/images/plus_sign.svg' %}" alt="">
+                Оставить заявку
+            </div>
+        </div>
+
+
+        <form class="phone-number-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset name="" id="phone-fieldset" style="display: none;">
+                <div class="question-title" style="font-size: 1.5em;">Оставьте свои контакты, и мы перезвоним вам</div>
+                <div class="input-fields">
+                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Телефон" style="width: 100%;"/>
+                </div>
+                <div class="bottomLine">
+                    <input type="submit" class="sendBtn" value="Отправить">
+                </div>
+            </fieldset>
+        </form>
+    </dialog>
 
     <section class="main-section">
         <img class="main-image" src="../../static/mebelevv/images/main.jpg" alt="main-image">
@@ -50,10 +82,10 @@
             <div class="main-arrow-wrap">
                 <a class="main-arrow" href='#gallery-pre-section'></a>
             </div>
-
-        </div>
     </section>
+
     <section id="gallery-pre-section"></section>
+
     <section class="gallery-section element hidden">
         <div class="gallery-text element hidden">НАШИ РАБОТЫ</div>
         <div id="container">
@@ -247,6 +279,7 @@
     </section>
 </body>
 
+{# Автовоспроизведение галереи #}
 <script>
     (function move() {
     let container = document.querySelector('.gallery-items'),
@@ -260,6 +293,7 @@
     })();
 </script>
 
+{# Скролл к блоку #}
 <script>
     function scrollToElem(className) {
         const element = document.querySelector(`.${className}`);
@@ -281,17 +315,16 @@
             const progress = timestamp - start;
             const progressFraction = Math.min(progress / duration, 1);
             const ease = (t) => t * (2 - t);
-
             window.scrollTo(0, startPosition + distance * ease(progressFraction));
             if (progress < duration) {
                 window.requestAnimationFrame(step);
             }
         }
-
         window.requestAnimationFrame(step);
     }
 </script>
 
+{#  #}
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const observerOptions = {
@@ -316,6 +349,7 @@
     });
 </script>
 
+{# Раскрытие ответа на часто задаваемый вопрос #}
 <script>
     var coll = document.getElementsByClassName("questions-collapsible");
     var i;
@@ -333,15 +367,35 @@
     }
 </script>
 
+{# Открытие/закрытие модального окна #}
 <script>
-    var dialog = document.querySelector('dialog')
+    var modalWindow = document.querySelector('#modalWindow')
     document.querySelector('#openModal').onclick = function () {
-        dialog.showModal()
+        modalWindow.showModal()
     }
     document.querySelector('#close').onclick = function () {
-        dialog.close()
+        modalWindow.close()
     }
 </script>
+
+{# Открытие/закрытие контактного окна #}
+<script>
+    var contactWindow = document.querySelector('#contactWindow')
+    document.querySelector('#openContacts').onclick = function () {
+        contactWindow.showModal()
+    }
+    contactWindow.addEventListener('click', function (event) {
+        var rect = contactWindow.getBoundingClientRect();
+        var isInDialog = (rect.top <= event.clientY && event.clientY <= rect.top + rect.height &&
+            rect.left <= event.clientX && event.clientX <= rect.left + rect.width);
+        if (!isInDialog) {
+            contactWindow.close();
+            document.querySelector('#phone-fieldset').style.display = 'none';
+            document.querySelector('#contacts-block').style.display = 'flex';
+        }
+    });
+</script>
+
 {#<script>#}
 {#    document.addEventListener("DOMContentLoaded", function () {#}
 {#        var scrollbar = document.body.clientWidth - window.innerWidth + 'px';#}
@@ -425,4 +479,13 @@ function closeNav() {
     setTimeout(document.getElementById("mySidenav").style.width = "0", 0);
 }
 </script>
+
+{# Открытие формы обратной связи в контактном окне #}
+<script>
+document.querySelector('#contact-via-phone').onclick = function () {
+    document.querySelector('#phone-fieldset').style.display = 'unset';
+    document.querySelector('#contacts-block').style.display = 'none';
+}
+</script>
+
 </html>

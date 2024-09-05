@@ -455,7 +455,7 @@ a {
 }
 
 
-dialog {
+#modalWindow {
     max-width: 70%;
     width: 452px;
     margin: auto;
@@ -480,7 +480,7 @@ fieldset {
 }
 
 .question-title {
-    font-size: 2.2em;
+    font-size: 1.5em;
 }
 
 .windowText {
@@ -837,3 +837,51 @@ a {
 button {
     cursor: pointer;
 }
+
+.contact {
+    color: #667085;
+    border: #D0D5DD solid 1px;
+    padding: 17px 22px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    transition: ease 0.2s;
+}
+
+.contact:hover {
+    border-color: #726156;
+    color: #726156;
+    background-color: #eee8e4;
+    .contact-icon {
+        filter: invert(40%) sepia(30%) saturate(270%) hue-rotate(340deg) brightness(88%) contrast(88%);
+    }
+}
+
+.contact-icon {
+    margin-right: 12px;
+}
+
+#contactWindow {
+    max-width: 70%;
+    width: 452px;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: white;
+    border: none;
+    border-radius: 23px;
+    padding: 33px 34px;
+}
+
+.contacts-block {
+    display: flex;
+    row-gap: 8px;
+    flex-direction: column;
+}
+
+.phone-number-form {}
