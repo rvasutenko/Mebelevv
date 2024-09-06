@@ -120,8 +120,8 @@ a {
 
 .main-arrow-wrap {
     display: flex;
-    bottom: 8vh;
-    position: absolute;
+    bottom: 8dvh;
+    position: relative;
     width: 100%;
     align-items: center;
     justify-content: center;
