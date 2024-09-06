@@ -312,7 +312,7 @@ a {
     color: var(--ui-white);
     font-weight: 500;
     font-size: 20px;
-    border-radius: 18px;
+    border-radius: 12px;
     width: fit-content;
     border: none;
     cursor: pointer;
@@ -325,6 +325,10 @@ a {
 }
 
 @media screen and (max-width: 650px) {
+    #contactWindow {
+        padding: 22px 24px !important;
+    }
+
     .calculator-image {
         display: none;
     }
@@ -345,7 +349,11 @@ a {
 
     .calculator-button {
         font-size: 14px;
-        padding: 8px 19px;
+        padding: 11px 21px;
+    }
+
+    .contacts-line {
+        margin-bottom: 2px !important;
     }
 
     .questions-title {
@@ -615,10 +623,24 @@ fieldset {
 }
 
 .answer img {
-    width: 100%;
+    width: 100% !important;
     border-radius: 8px;
     margin-bottom: 8px;
     aspect-ratio: 4 / 3;
+
+    @supports not (aspect-ratio: 4 / 3) {
+    &::before {
+        float: left;
+        padding-top: 75%;
+        content: "";
+    }
+
+    &::after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
 }
 
 .answer:hover {
@@ -973,6 +995,10 @@ button {
     display: flex;
     row-gap: 8px;
     flex-direction: column;
+}
+
+a:focus, button:focus {
+    outline: none;
 }
 
 .phone-number-form {}

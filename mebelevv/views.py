@@ -13,7 +13,7 @@ load_dotenv()
 def telegramSendMessage(phoneNumber, answers, file):
     message = f"Номер телефона: {phoneNumber}\n\n"
     if file:
-        message += f"Прикреплённые файлы: https://mebelevv.kz/files/{file}\n\n"
+        message += f"Прикреплённые файлы: https://mebelevv.kz/uploads/{file}\n\n"
     for index, (key, value) in enumerate(zip(answers.keys(), answers.values())):
         message += f"{index + 1}. <b>{key}</b> — {value}\n"
 

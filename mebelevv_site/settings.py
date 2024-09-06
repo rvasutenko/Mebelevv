@@ -17,14 +17,12 @@ SECRET_KEY = 'django-insecure-=#r2hznpv&&ot1u%$!9fh_yt$i7%*$q17mnu!8co)b%wepz$h5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'mebelevv',
-    # 'django_json_widget',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
