@@ -92,8 +92,9 @@ a {
 .main-image {
     object-fit: cover;
     position: relative;
-    height: 100vh;
+    height: 100dvh;
     width: 100%;
+    content: url("./images/main.jpg");
 }
 
 .main-text {
@@ -110,6 +111,10 @@ a {
 @media screen and (max-width: 650px) {
     .main-text {
         font-size: 10vw;
+    }
+
+    .main-image {
+        content: url("./images/main-mobile.jpg");
     }
 }
 
@@ -250,7 +255,12 @@ a {
 }
 
 .gallery-item-hr {
+    background-color: transparent;
+    transition: all 1s;
+    height: 1px;
     width: 100%;
+    color: black;
+    border: none;
 }
 
 .calculator-section {
@@ -318,16 +328,95 @@ a {
     .calculator-image {
         display: none;
     }
+
+    .gallery-text {
+        font-size: 24px;
+    }
+
+    .calculator-text {
+        font-size: 20px;
+        line-height: 22px;
+    }
+
+    .calculator-text-secondary {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .calculator-button {
+        font-size: 14px;
+        padding: 8px 19px;
+    }
+
+    .questions-title {
+        font-size: 24px !important;
+        line-height: 24px;
+    }
+
+    .questions-collapsible {
+        font-size: 16px !important;
+        line-height: 16px;
+    }
+
+    .questions-text {
+        font-size: 14px !important;
+        line-height: 16px !important;
+    }
+
+    .questions-collapsible:after {
+        padding: 6px !important;
+    }
+
+    .contacts-section {
+        padding: 30px !important;
+    }
+
+    .contacts-main {
+        flex-direction: column-reverse !important;
+        padding-bottom: 0 !important;
+    }
+
+    .contacts-map {
+        width: 100% !important;
+    }
+
+    .contacts-text {
+        display: none !important;
+    }
+
+    .contacts-connect-title, .contacts-address-title {
+        font-size: 20px !important;
+    }
+
+    .contacts-address {
+        display: flex !important;
+    }
+
+    .contacts-media {
+        display: none !important;
+    }
+
+    .contacts-wrap {
+        gap: 0 !important;
+    }
+
+
+    .contacts-connect-number, .contacts-connect-email,
+    .contacts-address-number, .contacts-address-email {
+        font-size: 14px !important;
+        font-weight: 400 !important;
+    }
+
+    .footer-copyright, .footer-rights {
+        font-size: 10px !important;
+    }
+
+
 }
 
 .gallery-items.active .gallery-item:nth-child(2) {
     opacity: 1;
     animation: elem 2s linear;
-
-    .gallery-item-text, .gallery-item-hr {
-        color: var(--gallery-active);
-    }
-
 }
 
 
@@ -338,6 +427,8 @@ a {
 .gallery-items.active .gallery-item:nth-child(2) .gallery-item-hr {
     transition: all 1s;
     background-color: var(--gallery-active);
+    height: 1px;
+    border: none;
     display: block;
 
 }
