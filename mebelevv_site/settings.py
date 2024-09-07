@@ -75,19 +75,12 @@ if not os.environ.get("REMOTE"):
     }
 else:
     DATABASES = {
-
         'default': {
-
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
             'NAME': f'{os.environ.get("DB_NAME")}',
-
             'USER': f'{os.environ.get("DB_USER")}',
-
             'PASSWORD': f'{os.environ.get("DB_PASSWORD")}',
-
             'HOST': f'{os.environ.get("DB_HOST")}',
-
             'PORT': f'{os.environ.get("DB_PORT")}',
         }
     }
