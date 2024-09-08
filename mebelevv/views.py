@@ -46,7 +46,6 @@ class MainPage(View):
             answers['Тип'] = 'Заявка на звонок'
         UserInfo(answers=answers, phoneNumber=phoneNumber, img=filename).save()
 
-
         questions = Question.objects.all()
         gallery = Gallery.objects.all()
         telegramSendMessage(phoneNumber, answers, filename)

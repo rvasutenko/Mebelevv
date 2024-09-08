@@ -153,7 +153,7 @@
             <fieldset name="" id="questionLast" style="display: none;">
                 <div class="question-title">Оставьте свои контакты, и мы перезвоним вам с результатами</div>
                 <div class="input-fields">
-                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Телефон"/>
+                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Телефон" onkeypress="return isNumberKey(event)" maxlength="16"/>
                     <label class="input-file">
                         <input type="file" id="userFile" name="userFile">
                         <span>Выберите файл</span>

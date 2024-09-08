@@ -623,24 +623,10 @@ fieldset {
 }
 
 .answer img {
-    width: 100% !important;
+    width: 100%;
     border-radius: 8px;
     margin-bottom: 8px;
     aspect-ratio: 4 / 3;
-
-    @supports not (aspect-ratio: 4 / 3) {
-    &::before {
-        float: left;
-        padding-top: 75%;
-        content: "";
-    }
-
-    &::after {
-        display: block;
-        content: "";
-        clear: both;
-    }
-}
 }
 
 .answer:hover {
